@@ -1,0 +1,22 @@
+{
+  "name": "stormclaim",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "tsx tests/run_scenarios.ts",
+    "snapshot": "tsx runtime/capture_snapshots.ts",
+    "demo": "tsx runtime/run_agent.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.67.0",
+    "basic-ftp": "^5.0.5",
+    "fast-xml-parser": "^5.2.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

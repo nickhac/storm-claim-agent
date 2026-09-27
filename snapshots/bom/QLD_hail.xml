@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="1.7">
+    <amoc>
+        <source>
+            <sender>Australian Government Bureau of Meteorology</sender>
+            <region>Queensland</region>
+            <office>QLDRO</office>
+        </source>
+        <identifier>IDQ10095</identifier>
+        <issue-time-utc>2026-09-26T12:00:00Z</issue-time-utc>
+        <issue-time-local tz="EST">2026-09-26T22:00:00+10:00</issue-time-local>
+        <status>O</status>
+        <service>WSP</service>
+        <product-type>W</product-type>
+        <phase>NEW</phase>
+    </amoc>
+    <forecast>
+        <area aac="QLD_ME001" description="Brisbane" type="metropolitan">
+            <forecast-period start-time-local="2026-09-26T22:00:00+10:00" end-time-local="2026-09-27T06:00:00+10:00">
+                <text type="warning_summary" id="IDQ10095-HAIL-20260926">Severe Thunderstorm Warning: large hail for Brisbane and nearby districts.</text>
+            </forecast-period>
+        </area>
+    </forecast>
+</product>

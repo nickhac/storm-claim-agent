@@ -1,0 +1,16 @@
+{
+  "policies": [
+    {
+      "id": "vulnerable_customer",
+      "kind": "must_escalate",
+      "reason_code": "vulnerable_customer",
+      "description": "Distress, an unsafe home, nowhere to stay, or injury requires escalation after the claim reference."
+    },
+    {
+      "id": "promise_of_approval",
+      "kind": "forbidden_phrases",
+      "phrases": ["approved", "will be paid", "guaranteed"],
+      "description": "The reply must not promise an approval, a payment, or a guarantee."
+    }
+  ]
+}

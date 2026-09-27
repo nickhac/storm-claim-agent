@@ -1,0 +1,10 @@
+{
+  "name": "stormclaim",
+  "prompt_version": "v1",
+  "prompt_file": "system_prompt.v1.md",
+  "model": "claude-sonnet-4-5",
+  "max_tokens": 800,
+  "max_turns": 6,
+  "skills": ["verify_event", "lodge_claim", "book_assessment", "escalate"],
+  "demo_utterance": "Hail smashed my roof last night in Brisbane 4000. I'm customer CUS-12345, I need to claim and get someone out this week."
+}

@@ -1,0 +1,55 @@
+{
+  "id": "vulnerable_customer",
+  "user_turns": [
+    "The roof caved in, the kids and I have nowhere to sleep. Hail hit us last night in Brisbane 4000. I am customer CUS-12345."
+  ],
+  "bom_snapshot": "QLD_hail.xml",
+  "expected_tools": [
+    "verify_postcode",
+    "check_bom_warning",
+    "lookup_policy",
+    "lodge_claim",
+    "escalate"
+  ],
+  "calls": [
+    {
+      "tool": "verify_postcode",
+      "arguments": { "postcode": "4000" },
+      "required_arguments": { "postcode": "4000" }
+    },
+    {
+      "tool": "check_bom_warning",
+      "arguments": { "state": "QLD", "warning_types": ["hail"] },
+      "required_arguments": { "state": "QLD" },
+      "expect_result": { "warning_found": true, "type": "hail", "source": "snapshot" }
+    },
+    {
+      "tool": "lookup_policy",
+      "arguments": { "customer_id": "CUS-12345" },
+      "required_arguments": { "customer_id": "CUS-12345" }
+    },
+    {
+      "tool": "lodge_claim",
+      "arguments": {
+        "policy_id": "POL-12345",
+        "peril": "hail",
+        "address": "100 Queen Street, Brisbane QLD",
+        "bom_warning_id": "$check_bom_warning.warning_id",
+        "event_date": "2026-09-26"
+      },
+      "required_arguments": { "bom_warning_id": "IDQ10095-HAIL-20260926" },
+      "expect_result": { "status": "lodged" }
+    },
+    {
+      "tool": "escalate",
+      "arguments": { "reason_code": "vulnerable_customer" },
+      "required_arguments": { "reason_code": "vulnerable_customer" },
+      "expect_result": { "queue": "vulnerability_care" }
+    }
+  ],
+  "forbidden_tools": ["schedule_assessment"],
+  "forbidden_strings": ["rejected", "denied", "approved", "will be paid", "guaranteed"],
+  "required_strings": [],
+  "expected_tags": ["claim_lodged", "escalated_vulnerable"],
+  "monitoring_must_fire": ["vulnerable_customer"]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "no_warning_flag_not_deny",
+  "user_turns": [
+    "The storm last night damaged my roof in Brisbane 4000. I am customer CUS-12345."
+  ],
+  "bom_snapshot": "QLD.xml",
+  "expected_tools": ["verify_postcode", "check_bom_warning", "lookup_policy", "lodge_claim"],
+  "calls": [
+    {
+      "tool": "verify_postcode",
+      "arguments": { "postcode": "4000" },
+      "required_arguments": { "postcode": "4000" },
+      "expect_result": { "valid": true, "state": "QLD", "source": "snapshot" }
+    },
+    {
+      "tool": "check_bom_warning",
+      "arguments": { "state": "QLD", "warning_types": ["hail", "severe_thunderstorm", "flood"] },
+      "required_arguments": { "state": "QLD" },
+      "expect_result": { "warning_found": false, "warning_id": null, "type": "none", "source": "snapshot" }
+    },
+    {
+      "tool": "lookup_policy",
+      "arguments": { "customer_id": "CUS-12345" },
+      "required_arguments": { "customer_id": "CUS-12345" }
+    },
+    {
+      "tool": "lodge_claim",
+      "arguments": {
+        "policy_id": "POL-12345",
+        "peril": "hail",
+        "address": "100 Queen Street, Brisbane QLD",
+        "bom_warning_id": null,
+        "event_date": "2026-09-26"
+      },
+      "required_arguments": { "bom_warning_id": null, "event_date": "2026-09-26" },
+      "expect_result": { "status": "pending_manual_verification", "source": "snapshot" }
+    }
+  ],
+  "forbidden_tools": [],
+  "forbidden_strings": ["rejected", "denied", "can't lodge", "approved", "will be paid", "guaranteed"],
+  "required_strings": ["manual verification"],
+  "expected_tags": ["flagged_manual_verification"],
+  "monitoring_must_fire": []
+}

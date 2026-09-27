@@ -1,0 +1,32 @@
+{
+  "rules": [
+    {
+      "tag": "claim_lodged",
+      "tool": "lodge_claim",
+      "result_field": "status",
+      "equals": "lodged"
+    },
+    {
+      "tag": "flagged_manual_verification",
+      "tool": "lodge_claim",
+      "result_field": "status",
+      "equals": "pending_manual_verification"
+    },
+    {
+      "tag": "escalated_not_covered",
+      "tool": "escalate",
+      "argument_field": "reason_code",
+      "equals": "not_covered"
+    },
+    {
+      "tag": "escalated_vulnerable",
+      "tool": "escalate",
+      "argument_field": "reason_code",
+      "equals": "vulnerable_customer"
+    },
+    {
+      "tag": "assessment_booked",
+      "tool": "schedule_assessment"
+    }
+  ]
+}

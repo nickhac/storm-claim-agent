@@ -1,0 +1,21 @@
+{
+  "id": "invalid_postcode",
+  "user_turns": [
+    "My roof was damaged last night. The postcode is 0000."
+  ],
+  "bom_snapshot": "QLD.xml",
+  "expected_tools": ["verify_postcode"],
+  "calls": [
+    {
+      "tool": "verify_postcode",
+      "arguments": { "postcode": "0000" },
+      "required_arguments": { "postcode": "0000" },
+      "expect_result": { "valid": false, "source": "snapshot" }
+    }
+  ],
+  "forbidden_tools": ["lodge_claim", "schedule_assessment", "check_bom_warning", "lookup_policy"],
+  "forbidden_strings": ["rejected", "denied", "can't lodge", "approved"],
+  "required_strings": ["confirm the address"],
+  "expected_tags": [],
+  "monitoring_must_fire": []
+}

@@ -1,0 +1,59 @@
+{
+  "language": "en-AU",
+  "timezone": "Australia/Brisbane",
+  "timeouts": {
+    "ftp_ms": 5000,
+    "http_ms": 3000
+  },
+  "retry": {
+    "max_retries": 1,
+    "backoff_ms": 250
+  },
+  "endpoints": {
+    "auspost_postcode_search": "https://digitalapi.auspost.com.au/postcode/search.json",
+    "bom_ftp_host": "ftp.bom.gov.au",
+    "bom_ftp_user": "anonymous",
+    "bom_ftp_password": "guest",
+    "bom_products": {
+      "QLD": "/anon/gen/fwo/IDQ10095.xml",
+      "NSW": "/anon/gen/fwo/IDN10035.xml"
+    }
+  },
+  "snapshots": {
+    "auspost_dir": "snapshots/auspost",
+    "bom_dir": "snapshots/bom",
+    "fixtures": "snapshots/fixtures.json",
+    "hail_fixture": "QLD_hail.xml",
+    "postcodes": ["4000", "2000", "0000"]
+  },
+  "queues": {
+    "not_covered": "coverage_exceptions",
+    "vulnerable_customer": "vulnerability_care",
+    "claim_outcome_question": "claims_decisions",
+    "identity": "identity_verification",
+    "complaint": "complaints"
+  },
+  "escalate_sentences": {
+    "not_covered": "This policy does not cover that peril, so I am connecting you with a coverage specialist.",
+    "vulnerable_customer": "I am connecting you with our care team so someone can help with a safe place to stay.",
+    "claim_outcome_question": "I cannot say how a claim will be decided, so I am transferring you to the claims team.",
+    "identity": "I need to confirm who you are, so I am transferring you to identity verification.",
+    "complaint": "I am transferring you to the complaints team so they can take this from here."
+  },
+  "warning_text_types": ["warning", "warning_summary", "warning_title", "warning_text"],
+  "warning_keywords": {
+    "hail": ["hail"],
+    "flood": ["flood"],
+    "severe_thunderstorm": ["thunderstorm"]
+  },
+  "warning_priority": ["hail", "severe_thunderstorm", "flood"],
+  "relative_dates": ["today", "tonight", "last night", "yesterday", "this week", "next week"],
+  "claim_ref_prefix": "SC",
+  "assessment": {
+    "assessor_name": "Alex Nguyen",
+    "windows": {
+      "this_week": "2026-10-01",
+      "next_week": "2026-10-08"
+    }
+  }
+}

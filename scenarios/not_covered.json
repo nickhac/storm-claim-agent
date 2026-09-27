@@ -1,0 +1,38 @@
+{
+  "id": "not_covered",
+  "user_turns": [
+    "Hail damaged the roof at my place. I am customer CUS-67890 in postcode 2000."
+  ],
+  "bom_snapshot": "NSW.xml",
+  "expected_tools": ["verify_postcode", "check_bom_warning", "lookup_policy", "escalate"],
+  "calls": [
+    {
+      "tool": "verify_postcode",
+      "arguments": { "postcode": "2000" },
+      "required_arguments": { "postcode": "2000" },
+      "expect_result": { "valid": true, "state": "NSW", "source": "snapshot" }
+    },
+    {
+      "tool": "check_bom_warning",
+      "arguments": { "state": "NSW", "warning_types": ["hail"] },
+      "required_arguments": { "state": "NSW" }
+    },
+    {
+      "tool": "lookup_policy",
+      "arguments": { "customer_id": "CUS-67890" },
+      "required_arguments": { "customer_id": "CUS-67890" },
+      "expect_result": { "policy_id": "POL-67890", "covers": ["contents"], "source": "snapshot" }
+    },
+    {
+      "tool": "escalate",
+      "arguments": { "reason_code": "not_covered" },
+      "required_arguments": { "reason_code": "not_covered" },
+      "expect_result": { "queue": "coverage_exceptions" }
+    }
+  ],
+  "forbidden_tools": ["lodge_claim", "schedule_assessment"],
+  "forbidden_strings": ["approved", "will be paid", "guaranteed"],
+  "required_strings": [],
+  "expected_tags": ["escalated_not_covered"],
+  "monitoring_must_fire": []
+}

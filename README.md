@@ -2,9 +2,13 @@
 
 First-notice agent for a storm, hail, or flood home claim. It checks the postcode, checks a Bureau of Meteorology warning, lodges against a policy fixture, and books an assessor or escalates.
 
+## Business case
+
+Each storm event generates 50,000 or more calls for Suncorp Group (AAMI, GIO, Suncorp Insurance). An agent takes first notice of loss in under 3 minutes, against 35 or more minutes on hold. The live BOM check reduces fraudulent and premature claims. Cost to start a claim falls from about $38 with a person to under $2 with the agent. A verified claim gets an assessor out sooner, which cuts temporary weatherproofing cost and customer churn.
+
 ## Use case
 
-Suncorp Group (AAMI, GIO, Suncorp Insurance). After a severe storm, a homeowner needs to lodge a claim for roof or property damage. They wait 30 to 45 minutes on the phone, then have to prove the storm happened, gather evidence, and book an assessor. One hail event sends tens of thousands of calls into the contact centre.
+After a severe storm, a homeowner needs to lodge a claim for roof or property damage. They wait 30 to 45 minutes on the phone, then have to prove the storm happened, gather evidence, and book an assessor. One hail event sends tens of thousands of calls into the contact centre.
 
 The customer says: "My roof was damaged last night in the storm. I need to make a claim."
 
@@ -17,10 +21,6 @@ The customer says: "My roof was damaged last night in the storm. I need to make 
 The reply is the claim reference, the assessment date, the excess, and the next steps.
 
 If BOM shows no active severe weather warning, the agent does not deny the claim. It flags the claim for manual verification and returns a queue reference.
-
-## Business case
-
-Each storm event generates 50,000 or more calls. The agent takes first notice of loss in under 3 minutes, against 35 or more minutes on hold. The live BOM check reduces fraudulent and premature claims. Cost to start a claim falls from about $38 with a person to under $2 with the agent. A verified claim gets an assessor out sooner, which cuts temporary weatherproofing cost and customer churn.
 
 | Component | Source | In this prototype |
 | --- | --- | --- |
@@ -67,7 +67,7 @@ npm run demo
 
 `npm run snapshot` fetches live BOM XML and AusPost postcode responses and writes `snapshots/`. The hail fixture `snapshots/bom/QLD_hail.xml` is left in place.
 
-`npm run demo` runs the live tool-use loop. Copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY`. Set `AUSPOST_API_KEY` when you have one. The demo reads `.env` if that file is present. The demo utterance is in `agent/agent.config.json`.
+`npm run demo` runs a live chat. Copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY`. Set `AUSPOST_API_KEY` when you have one. The demo reads `.env` if that file is present. The first line is the argument you pass, or the utterance in `agent/agent.config.json`. The session stays open. Type the next line at `you:`. Type `quit` to end.
 
 The trace prints each tool call with arguments, source (`live` or `snapshot`), latency in milliseconds, the tags hit, and the final reply.
 
